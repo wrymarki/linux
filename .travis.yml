@@ -8,13 +8,13 @@ git:
   lfs_skip_smudge: true
 
 before_install:
-        - sudo apt-get update -qq
-
-        - sudo apt-get install -y gcc-arm-linux-gnueabihf
-        - arm-linux-gnueabihf-gcc --version
-
+        #        - sudo apt-get update -qq
         - sudo apt-get install bc
         - if [ `uname -m` = x86_64 ]; then sudo apt-get install libc6-i386 lib32stdc++6 lib32z1; fi
+
+        #        - sudo apt-get install -y gcc-arm-linux-gnueabihf
+        #        - arm-linux-gnueabihf-gcc --version
+
 
 before_script:
           #   - export MYHOME=$PWD
@@ -27,11 +27,11 @@ script:
           #        - export CROSS_COMPILE=arm-linux-gnueabihf-
         - cd $TRAVIS_BUILD_DIR
 
-        - make allnoconfig
-        - make -j`getconf _NPROCESSORS_ONLN` all
+#        - make allnoconfig
+#        - make -j`getconf _NPROCESSORS_ONLN` all
 
-        - make alldefconfig
-        - make -j`getconf _NPROCESSORS_ONLN` all
+#       - make alldefconfig
+#        - make -j`getconf _NPROCESSORS_ONLN` all
 
         - make allyesconfig
         - make -j`getconf _NPROCESSORS_ONLN` all
